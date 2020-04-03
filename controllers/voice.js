@@ -18,9 +18,11 @@ router.get("/start", async (req, res) => {
     //All words(incl. the wrong ones) are stored in memory
     let userBackupId = req.cookies['userBackupId'];
     console.log(userBackupId);
+    let userWords1 = await VoiceMethods.getUserWords(userBackupId);
+    console.log(userWords1);
     res.cookie("userWords", await VoiceMethods.getUserWords(userBackupId));
-    let userWords = req.cookies['userWords'];
-    console.log(userWords);
+    let userWords2 = req.cookies['userWords'];
+    console.log(userWords2);
     // global.userWords = await VoiceMethods.getUserWords();
 
     //Counter for the words sent to test

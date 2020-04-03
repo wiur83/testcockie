@@ -131,6 +131,7 @@ router.post("/login", async (req, res) => {
                     //Words are imported from words-table in DB and stored
                     //in memory
                     let words = await VoiceMethods.getWords()
+
                     await res.cookie("words", words);
 
                     // global.words = await VoiceMethods.getWords();

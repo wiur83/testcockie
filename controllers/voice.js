@@ -20,8 +20,8 @@ router.get("/start", async (req, res) => {
     console.log(userBackupId);
     let userWords1 = await VoiceMethods.getUserWords(userBackupId);
     console.log(userWords1);
-    res.cookie("userWords", userWords1);
-    let userWords2 = req.cookies['userWords'];
+    res.cookie("hej", "hej-test");
+    let userWords2 = req.cookies['hej'];
     console.log(userWords2);
     // global.userWords = await VoiceMethods.getUserWords();
 

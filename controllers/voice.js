@@ -62,13 +62,16 @@ router.get("/talk-login", verify, async (req, res) => {
     } else {
         //Sets the current word that is sent to user
         let userWords = req.cookies['userWords'];
+        console.log(userWords);
         let startCounter = parseInt(req.cookies['startCounter']);
+        console.log(startCounter);
 
         res.cookie("currentWord", Object.keys(userWords)[parseInt(startCounter)]);
         // global.currentWord = Object.keys(global.userWords)[global.startCounter];
 
         //Sets the current res_words that is used to compare if correct(success)
-        let currentWord = req.cookies['currentWord'];
+        let currentWord = Object.keys(userWords)[parseInt(startCounter)];
+        console.log(currentWord);
 
         res.cookie("currentResWords", userWords[currentWord]);
         // global.currentResWords = global.userWords[global.currentWord];
@@ -81,7 +84,7 @@ router.get("/talk-login", verify, async (req, res) => {
         // console.log(userWords[startCounter]));
 
         console.log(counterWords);
-        console.log(startCounter);
+
         if (counterWords > startCounter) {
             res.render("../views/talk.ejs", { msg: currentWord });
         } if (counterWords == startCounter) {

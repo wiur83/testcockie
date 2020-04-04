@@ -101,6 +101,8 @@ module.exports = {
     },
     //Lägger till ett(+1) på räknaren i DB om ordet redan finns
     addToNrOfTries: async function(userBackupId, subWord) {
+        console.log(userBackupId);
+        console.log(subWord);
 
         return new Promise(resolve => {
             db.get("SELECT nr_of_tries FROM data WHERE user_id = ? AND res_word = ?",

@@ -34,6 +34,9 @@ module.exports = {
             for (let i = 0; i < wordsList.length; i++) {
                 db.get("SELECT COUNT(*) AS total FROM data WHERE word = ? AND user_id = ?",
                 wordsList[i],userBackupId,(err, row) => {
+                    console.log("row");
+                    console.log(row);
+                    console.log("row");
                     if (err) {
                         resolve(err);
                     } else {
@@ -54,9 +57,6 @@ module.exports = {
     },
     //Vid login
     getUserWords: async function(userBackupId) {
-
-
-
         return new Promise(resolve => {
             db.all("SELECT * FROM data WHERE user_id = ?",
             userBackupId, async (err, row) => {
@@ -73,7 +73,7 @@ module.exports = {
                         }
 
                     }
-                    // res.cookie("userWords", Obj);
+                    console.log(Obj);
                     resolve(Obj);
                 }
 

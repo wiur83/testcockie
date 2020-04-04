@@ -125,13 +125,19 @@ router.post("/login", async (req, res) => {
                     //Token and user ID is stored in memory
                     res.cookie("globalToken", result.text);
                     res.cookie("userBackupId", result.backup_id);
+                    console.log("1");
+                    console.log(result.text);
+                    console.log(result.backup_id);
+                    console.log("1");
                     // global.globalToken = result.text;
                     // global.userBackupId = result.backup_id;
 
                     //Words are imported from words-table in DB and stored
                     //in memory
                     let words = await VoiceMethods.getWords()
-
+                    console.log("2");
+                    console.log(words);
+                    console.log("2");
                     await res.cookie("words", words);
 
                     // global.words = await VoiceMethods.getWords();
@@ -140,8 +146,8 @@ router.post("/login", async (req, res) => {
                     //with user ID
                     //This only happens if new user or new words are added
                     //in words-table
-                    let userBackupId = req.cookies['userBackupId'];
-                    await VoiceMethods.setUserWords(words, userBackupId);
+
+                    await VoiceMethods.setUserWords(words, result.backup_id);
 
                     res.redirect('../voice/start');
                 } else {

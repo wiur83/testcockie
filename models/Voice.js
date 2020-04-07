@@ -26,10 +26,7 @@ module.exports = {
     },
     //Vid login
     setUserWords: async function(wordsList, userBackupId) {
-        console.log("setUserWords");
-        console.log(wordsList);
-        console.log(userBackupId);
-        console.log("setUserWords");
+
 
         return new Promise(resolve => {
             // let wordsList = req.cookies['words'];
@@ -38,7 +35,7 @@ module.exports = {
             for (let i = 0; i < wordsList.length; i++) {
                 db.get("SELECT COUNT(*) AS total FROM data WHERE word = ? AND user_id = ?",
                 wordsList[i],userBackupId,(err, row) => {
-        
+
                     if (err) {
                         resolve(err);
                     } else {
